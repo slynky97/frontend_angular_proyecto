@@ -1,1 +1,13 @@
-<p>login works!</p>
+<h1>Ingresar</h1>
+<form [formGroup]="loginForm" (ngSubmit)="funIngresar()">
+    <label for="corr"></label>Ingrese Correo
+    <input type="email" formControlName="email">
+    <br>
+    <label for="pass">Ingrese su Contrasena</label>
+    <input type="password" formControlName="password">
+    <br>
+    <button type="submit" [disabled]="!loginForm.valid">Ingresar</button>
+    <button type="button" (click)="funPersonalizado()">Boton Personalizado</button>
+    <input type="reset" value="Limpiar">
+
+</form>
