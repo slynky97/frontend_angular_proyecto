@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,20 @@ export class Login {
   });
 
   router = inject(Router);
+  authService = inject(AuthService);
 
   funIngresar() {
-    if(this.loginForm.value.email == "admin@mail.com" && this.loginForm.value.password == "admin54321"){
-      this.router.navigate(["/admin/perfil"])
-    }else{
-      alert('Credenciales incorrectas');
-    }
+
+    this.authService.funConectarConBackendExterno(this.loginForm.value).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.router.navigate(["/admin/perfil"])
+      },
+      (error) => {
+
+        alert('Credenciales incorrectas');
+      }
+    )
   }
 
   funPersonalizado(){
