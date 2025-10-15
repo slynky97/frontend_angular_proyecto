@@ -25,6 +25,7 @@ export class Login {
     this.authService.funConectarConBackendExterno(this.loginForm.value).subscribe(
       (res: any) => {
         console.log(res);
+        localStorage.setItem("access_token", res.access_token);
         this.router.navigate(["/admin/usuario"])
       },
       (error) => {
