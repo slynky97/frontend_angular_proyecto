@@ -1,23 +1,68 @@
-<h1>Lista usuarios</h1>
+<h1>Lista de Usuarios</h1>
 
-{{ usuarios() }}
-<table border="1">
-    <thead>
-        <tr>
-            <th>EMAIL</th>
-            <th>NOMBRE</th>
-            <th>ESTADO</th>
-            <th>ACCION</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (user of usuarios(); track $index) {
+<div id="crearUsuarioModal" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-gray-800 bg-opacity-50">
+
+    <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+    
+        <h2 class="text-xl font-semibold mb-4">Crear Usuario</h2>
+        <div class="mb-4">
+            <label for="em" class="block text-sm font-medium text-gray-700">Correo</label>
+            <input type="email"
+                class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required [(ngModel)]="usuario().email">
+        </div>
+        <div class="mb-4">
+            <label for="nom" class="block text-sm font-medium text-gray-700">Ingrese Nombre</label>
+            <input type="text"
+                class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required [(ngModel)]="usuario().name">
+        </div>
+        <div class="mb-4">
+            <label for="pass" class="block text-sm font-medium text-gray-700">Ingrese Contraseña</label>
+            <input type="password"
+                class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required [(ngModel)]="usuario().password">
+        </div>
+    
+        <div class="flex justify-end space-x-2">
+            <button type="button" class="px-4 py-2 bg-gray-300 rounded-lg text-white hover:bg-gray-400" (click)="cerrarModal()">
+                Cancelar
+            </button>
+
+            <button type="button" class="px-4 py-2 bg-blue-500 rounded-lg text-white hover:bg-blue-600" (click)="funGuardarUsuario()">
+                {{isModeEditar()?'Actualizar Usuario':'Guardar Usuario'}}
+            </button>
+        </div>
+    </div>
+</div>
+
+<button (click)="abrirnuevoUsuarioModal()" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Nuevo Usuario</button>
+
+
+<div class="overflow-x-auto bg-white rounded-lg shadow">
+    <table class="min-w-full divide-y border-gray-300">
+        <thead class="bg-gray-100">
             <tr>
-            <td>{{ user.email }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.estado? 'ACTIVO':'INACTIVO' }}</td>
-            <td></td>
+                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">EMAIL</th>
+                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">NOMBRE</th>
+                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">ESTADO</th>
+                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">ACCION</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+            @for (user of usuarios(); track $index) {
+            <tr>
+                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-900">{{ user.email }}</td>
+                <td class="px-4 py-2">{{ user.name }}</td>
+                <td class="px-4 py-2">{{ user.estado?'ACTIVO':'INACTIVO' }}</td>
+                <td class="px-4 py-2">
+                    <button class="text-blue-500 hover:text-blue-700 mr-4" (click)="editarUsuario(user)">Editar</button>
+                    <button class="text-red-500 hover:underline">Eliminar</button>
+    
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
