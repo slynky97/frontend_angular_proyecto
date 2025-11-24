@@ -4,7 +4,7 @@ import { AuthRoutingModule } from "./auth/auth-routing-module";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, AuthRoutingModule, RouterLink],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
