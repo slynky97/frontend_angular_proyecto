@@ -1,6 +1,6 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
-//import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
@@ -12,14 +12,12 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes, withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }), withEnabledBlockingInitialNavigation()),
-    //provideAnimationsAsync(),
+    provideAnimations(),
     providePrimeNG({ theme: { preset: 'Aura', options: { darkModeSelector: '.app-dark' } } }), 
     provideHttpClient(withInterceptors([authInterceptorInterceptor]),withFetch())
   ]
 };
 
 
-function provideAnimationsAsync(): import("@angular/core").Provider | import("@angular/core").EnvironmentProviders {
-  throw new Error('Function not implemented.');
-}
+
 

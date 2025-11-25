@@ -19,20 +19,26 @@ export class Login {
 
   router = inject(Router);
   authService = inject(AuthService);
+  loading = false;
 
   funIngresar() {
+    if (this.loginForm.invalid) return;
 
-    this.authService.funConectarConBackendExterno(this.loginForm.value).subscribe(
+    this.loading = true;
+    const sub = this.authService.funConectarConBackendExterno(this.loginForm.value).subscribe(
       (res: any) => {
         console.log(res);
         localStorage.setItem("access_token", res.access_token);
-        this.router.navigate(["/admin/usuario"])
+        this.router.navigate(["/admin/usuario"], { replaceUrl: true });
       },
       (error) => {
-
+        console.error('Login error', error);
+        // Dejar que el usuario vea el mensaje de error
         alert('Credenciales incorrectas');
       }
-    )
+    );
+    // asegurarnos de resetear loading cuando termine
+    sub.add(() => this.loading = false);
   }
 
   funPersonalizado(){
