@@ -26,11 +26,11 @@ export class AppMenu {
                 { label: 'Perfil', icon: 'pi pi-fw pi-home', routerLink: ['/admin/perfil'] }]
             },
             {
-                label: 'UI Components',
+                label: 'Seguridad',
                 items: [
                     { label: 'Usuarios', icon: 'pi pi-fw pi-home', routerLink: ['/admin/usuario'] },
-                    { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
-                    { label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
+                    { label: 'Roles & Permisos', icon: 'pi pi-fw pi-id-card', routerLink: ['/admin/roles'] },
+                    /*{ label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
                     { label: 'Button', icon: 'pi pi-fw pi-mobile', class: 'rotated-icon', routerLink: ['/uikit/button'] },
                     { label: 'Table', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/table'] },
                     { label: 'List', icon: 'pi pi-fw pi-list', routerLink: ['/uikit/list'] },
@@ -43,21 +43,20 @@ export class AppMenu {
                     { label: 'File', icon: 'pi pi-fw pi-file', routerLink: ['/uikit/file'] },
                     { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/uikit/charts'] },
                     { label: 'Timeline', icon: 'pi pi-fw pi-calendar', routerLink: ['/uikit/timeline'] },
-                    { label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc'] }
+                    { label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc'] }*/
                 ]
             },
             {
-                label: 'Pages',
+                label: 'Gestion de Inventario',
                 icon: 'pi pi-fw pi-briefcase',
-                routerLink: ['/pages'],
                 items: [
                     {
-                        label: 'Landing',
+                        label: 'Categoria',
                         icon: 'pi pi-fw pi-globe',
-                        routerLink: ['/landing']
+                        routerLink: ['/admin/categoria']
                     },
-                    {
-                        label: 'Auth',
+                    /*{
+                        label: 'Producto',
                         icon: 'pi pi-fw pi-user',
                         items: [
                             {
@@ -76,25 +75,56 @@ export class AppMenu {
                                 routerLink: ['/auth/access']
                             }
                         ]
-                    },
+                    },*/
                     {
-                        label: 'Crud',
+                        label: 'Producto',
                         icon: 'pi pi-fw pi-pencil',
-                        routerLink: ['/pages/crud']
+                        routerLink: ['/admin/producto']
                     },
                     {
-                        label: 'Not Found',
+                        label: 'Almacen',
                         icon: 'pi pi-fw pi-exclamation-circle',
-                        routerLink: ['/pages/notfound']
+                        routerLink: ['/admin/almacen']
                     },
                     {
-                        label: 'Empty',
+                        label: 'Sucursal',
                         icon: 'pi pi-fw pi-circle-off',
-                        routerLink: ['/pages/empty']
+                        routerLink: ['/admin/sucursal']
                     }
                 ]
             },
             {
+                label: 'Gestion Pedidos',
+                icon: 'pi pi-fw pi-briefcase',
+                items: [
+                    {
+                        label: 'Cliente/Proveedor',
+                        icon: 'pi pi-fw pi-globe',
+                        routerLink: ['/admin/cliente']
+                    },
+                    {
+                        label: 'Compra',
+                        icon: 'pi pi-fw pi-pencil',
+                        routerLink: ['/admin/nota/compra']
+                    },
+                    {
+                        label: 'Nueva Compra',
+                        icon: 'pi pi-fw pi-circle-off',
+                        routerLink: ['/admin/nota/compra/nuevo']
+                    },
+                    {
+                        label: 'Venta',
+                        icon: 'pi pi-fw pi-exclamation-circle',
+                        routerLink: ['/admin/nota/venta']
+                    },
+                    {
+                        label: 'Nueva Venta',
+                        icon: 'pi pi-fw pi-circle-off',
+                        routerLink: ['/admin/nota/venta/nuevo']
+                    },
+                ]
+            }
+            /*{
                 label: 'Hierarchy',
                 items: [
                     {
@@ -153,7 +183,7 @@ export class AppMenu {
                         target: '_blank'
                     }
                 ]
-            }
+            }*/
         ];
     }
 }
