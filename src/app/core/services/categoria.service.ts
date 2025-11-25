@@ -5,29 +5,28 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class CategoriaService {
   urlBase = environment.urlBackendApi;
   http = inject(HttpClient);
 
   funListar(){
-    console.log("Http SERVICE")
-    return this.http.get(`${this.urlBase}/users`);
+    return this.http.get(`${this.urlBase}/categoria`);
   }
 
   funGuardar(datos: any){
-    return this.http.post(`${this.urlBase}/users`, datos);
+    return this.http.post(`${this.urlBase}/categoria`, datos);
   }
 
   funMostrar(id: string){
-    return this.http.get(`${this.urlBase}/users/${id}`);
+    return this.http.get(`${this.urlBase}/categoria/${id}`);
   }
 
   funModificar(id: string='-', datos: any){
-    return this.http.patch(`${this.urlBase}/users/${id}`, datos);
+    return this.http.patch(`${this.urlBase}/categoria/${id}`, datos);
   }
 
   funEliminar(id: string){
-    return this.http.delete(`${this.urlBase}/users/${id}`);
+    return this.http.delete(`${this.urlBase}/categoria/${id}`);
   }
 
 }
